@@ -1,9 +1,8 @@
 package com.exam.examportal;
 
-import com.exam.examportal.model.dto.RoleDto;
-import com.exam.examportal.model.dto.UserDto;
-import com.exam.examportal.model.dto.UserRoleDto;
-import com.exam.examportal.model.entity.UserRole;
+import com.exam.examportal.model.Role;
+import com.exam.examportal.model.User;
+import com.exam.examportal.model.UserRole;
 import com.exam.examportal.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,24 +32,27 @@ public class ExamPortalApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        UserDto userDto = new UserDto();
-        userDto.setUsername("mehedi");
-        userDto.setPassword("1234");
-        userDto.setFirstName("Mehedi");
-        userDto.setLastName("Hasan");
-        userDto.setEmail("mehedi@gmail.com");
-        userDto.setProfileImage("user_profile.jpg");
+        User user = new User();
+        user.setUsername("fariya");
+        user.setPassword("1234");
+        user.setFirstName("Fariya");
+        user.setLastName("Richie");
+        user.setEmail("fariya@gmail.com");
+        user.setPhone("01306199926");
+        user.setProfileImage("user_profile.jpg");
 
-        RoleDto roleDto = new RoleDto();
-        roleDto.setId(1);
-        roleDto.setRoleName("ROLE_ADMIN");
+        Role role = new Role();
+        role.setId(1);
+        role.setRoleName("ROLE_ADMIN");
 
-        Set<UserRoleDto> userRolesDto = new HashSet<>();
-        UserRoleDto userRoleDto = new UserRoleDto();
-        userRoleDto.setRole(roleDto);
-        userRoleDto.setUser(userDto);
+        Set<UserRole> userRoles = new HashSet<>();
+        UserRole userRole = new UserRole();
+        userRole.setRole(role);
+        userRole.setUser(user);
 
-        this.userService.createUser(userDto, userRolesDto);
+        userRoles.add(userRole);
+
+        this.userService.createUser(user, userRoles);
 
     }
 }

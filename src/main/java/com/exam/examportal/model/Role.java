@@ -1,4 +1,4 @@
-package com.exam.examportal.model.entity;
+package com.exam.examportal.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class Role {
     @Id
     private long id;
 
-    @Column(name = "roleName")
+    @Column(name = "role_name")
     private String roleName;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

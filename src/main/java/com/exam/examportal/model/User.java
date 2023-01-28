@@ -1,5 +1,6 @@
-package com.exam.examportal.model.entity;
+package com.exam.examportal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,22 +28,26 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "profileImage", nullable = true)
+    @Column(name = "phone", nullable = false)
+    private String phone;
+
+    @Column(name = "profile_image", nullable = true)
     private String profileImage;
 
     @Column(name = "status")
     private boolean status = true;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
 
 }

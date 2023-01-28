@@ -1,4 +1,4 @@
-package com.exam.examportal.model.entity;
+package com.exam.examportal.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,7 @@ public class UserRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
